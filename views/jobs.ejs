@@ -1,0 +1,45 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>
+    <div class="container">
+        <article>
+            <form role="search">
+                <input name="search" type="search" placeholder="Pesquisar vaga">
+                <input type="submit" value="Pesquisar">
+            </form>
+            <table class="striped">
+                <thead data-theme="dark">
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% jobs.forEach((job) => { %>
+                        <tr>
+                            <td><%= job.title %></td>
+                            <td><%= job.company %></td>
+                            <td><%= job.model %></td>
+                            <td>
+                                <button onclick="window.location.href='/job/<%= job._id %>'">Exibir</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="4">Total de vagas: <%= jobs.length %></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+    </div>
+</main>
+
+<script src="/jobs.js"></script>
+
+</body>
+</html>

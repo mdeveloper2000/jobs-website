@@ -1,0 +1,37 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>
+    <div class="container">
+        <article>
+            <header>                
+                <h3><%= job.title %></h3>
+                <h4><%= job.company %></h4>
+                <h5><%= job.model %></h5>
+                <span class="pico-background-azure-100 numbers">Concorrentes: <%= registered %></span>
+            </header>
+                <%= job.description %>
+                <form class="job-options">
+                    <input type="hidden" name="job_id" value="<%= job._id %>" />
+                    <div>
+                        <% if(!subscribed) { %>
+                            <button type="submit" class="pico-background-green-100">Concorrer</button>
+                        <% } else { %>
+                            <button type="submit" class="pico-background-red-100">Cancelar inscrição</button>
+                        <% } %>
+                    </div>
+                </form>                
+            <footer>
+                <% const tags = job.tags.split(",") %>
+                <% tags.forEach(tag => { %>
+                    <span class="pico-background-blue-500 tags"><%= tag %></span>
+                <% }) %>
+            </footer>
+        </article>
+    </div>
+</main>
+
+<script src="/job.js"></script>
+
+</body>
+</html>

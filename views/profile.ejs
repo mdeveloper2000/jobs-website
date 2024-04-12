@@ -1,0 +1,75 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>
+    <div class="container">            
+        <form class="profile">            
+            <article>
+                <details open>
+                    <summary>Dados Pessoais</summary>
+                    <input type="text" name="name" value="<%= profile.name %>" maxlength="50" placeholder="Nome">
+                    <input type="email" name="email" value="<%= profile.email %>" maxlength="50" placeholder="E-mail">
+                    <input type="tel" name="telephone" value="<%= profile.telephone %>" maxlength="20" placeholder="Telefone">
+                    <input type="url" name="website" value="<%= profile.website %>" maxlength="50" placeholder="Website">
+                    <input type="text" name="city" value="<%= profile.city %>" maxlength="30" placeholder="Cidade">
+                </details>
+                <hr />
+                <details>
+                    <summary>Formação</summary>
+                    <select name="education" id="allEducation" aria-label="Selecionar escolaridade">
+                        <% let education = profile.schema.path("education").enumValues %>
+                        <% education = education.toString().split(",") %>
+                        <option value="">Escolaridade:</option>                            
+                        <% education.forEach(item => { %>
+                            <option value="<%= item %>" <%= profile.education == item ? "selected" : "" %>><%= item %></option>
+                        <% }) %>
+                    </select>               
+                    <div class="grid">
+                        <fieldset>
+                            <legend>
+                                Idiomas &nbsp;<input id="allLanguages" type="checkbox" role="switch">
+                            </legend>
+                            <% languages = languages.toString().split(",") %>
+                            <% languages.forEach(language => { %>
+                                <label><input type="checkbox" class="languages" name="<%= language %>" 
+                                    value="<%= language %>"
+                                    <% if(profile.languages !== undefined) { %><%= profile.languages.includes(language) ? "checked" : "" %> <% } %>> <%= language %></label>
+                            <% }) %>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                Tecnologias &nbsp;<input id="allTechs" type="checkbox" role="switch">
+                            </legend>                            
+                            <% technologies = technologies.toString().split(",") %>
+                            <% technologies.forEach(tech => { %>
+                                <label>
+                                    <input type="checkbox" class="technologies" name="<%= tech %>" value="<%= tech %>"
+                                    <% if(profile.technologies !== undefined) { %><%= profile.technologies.includes(tech) ? "checked" : "" %><% } %>> <%= tech %>
+                                </label>
+                            <% }) %>
+                        </fieldset>
+                    </div>
+                </details>
+                <hr>
+                <details>
+                    <summary>Experiência Profissional</summary>
+                    <textarea name="experience" placeholder="Experiência profissional" 
+                        aria-label="Experiência profissional" maxlength="300"><%= profile.experience %></textarea>
+                    <textarea name="extra" placeholder="Outras informações" 
+                        aria-label="Outras informações" maxlength="300"><%= profile.extra %></textarea>                    
+                </details>                
+            </article>
+            <article>
+                <h6>Perfil está <%= progress %>% preenchido</h6>
+                <progress value="<%= progress %>" max="100">
+            </article>
+            <button type="submit">Atualizar</button>
+            <div class="pico-background-red-500 errors" style="display: none;"></div>
+        </form>
+    </div>
+</main>
+
+<script src="/profile.js"></script>
+
+</body>
+</html>

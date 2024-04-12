@@ -1,0 +1,39 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>
+    <div class="container">
+        <article>
+            <table class="striped">
+                <thead data-theme="dark">
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% subscriptions.forEach((subscription) => { %>
+                        <tr>
+                            <td><%= subscription.job_id.title %></td>
+                            <td><%= subscription.job_id.company %></td>
+                            <td><%= subscription.job_id.model %></td>
+                            <td>
+                                <button onclick="window.location.href='/job/<%= subscription.job_id._id %>'">Exibir</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="4">Total de inscrições: <%= subscriptions.length %></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>        
+    </div>
+</main>
+
+</body>
+</html>

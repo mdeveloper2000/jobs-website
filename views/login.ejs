@@ -1,0 +1,25 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>
+    <div class="container">
+        <form>
+            <article>
+                <h6>Login</h6>
+                <label>E-mail
+                    <input type="email" name="email" placeholder="E-mail" maxlength="50">
+                </label>
+                <label>Senha
+                    <input type="password" name="password" placeholder="Senha" maxlength="60">
+                </label>                
+                <input type="submit" value="Acessar">
+                <div class="pico-background-red-500 errors" style="display: none;"></div>                
+            </article>                        
+        </form>
+    </div>
+</main>
+
+<script src="/login.js"></script>
+
+</body>
+</html>

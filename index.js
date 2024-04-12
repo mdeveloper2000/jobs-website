@@ -1,0 +1,22 @@
+const express = require("express")
+const routes = require("./routes/routes")
+const mongoose = require("mongoose")
+const cookieParser = require("cookie-parser")
+const app = express()
+require("dotenv").config()
+
+app.use("/picocss", express.static(__dirname + "/node_modules/@picocss/pico/css"))
+app.use(express.static("public"))
+app.use(express.static("public/css"))
+app.use(express.static("public/js"))
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(cookieParser())
+app.set("view engine", "ejs")
+mongoose.set("strictQuery", true)
+app.use(routes)
+
+const database = process.env.DATABASE
+mongoose.connect(database)
+    .then((result) => app.listen(process.env.PORT || 5000))
+    .catch((error) => console.log(error))

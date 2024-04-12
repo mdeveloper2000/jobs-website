@@ -1,0 +1,57 @@
+<nav>
+    <ul>
+        <li>
+            <strong>Jobs Website &nbsp;</strong>
+            <span>
+                <% if(user === null) { %>
+                    <i>(Olá, visitante) &nbsp;</i>
+                    <% if(page == "Login") { %>
+                        <button onclick="window.location.href='/login'">Login</button>
+                    <% } else { %>
+                        <a href="/login">Login</a>
+                    <% } %>
+                    <% if(page == "Registro") { %>
+                        <button onclick="window.location.href='/register'">Registro</button>                    
+                    <% } else { %>
+                        <a href="/register">Registro</a>
+                    <% } %>
+                <% } else { %>
+                    <i>
+                        (Olá, <%= user.name %>) - <button class="pico-background-red-500"
+                        onclick="window.location.href='/logout'">Sair</button>
+                    </i>
+                <% } %>    
+            </span>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <% if(page == "Início") { %>
+                <button onclick="window.location.href='/'">Início</button>
+            <% } else { %>
+                <a href="/">Início</a>
+            <% } %>
+        </li>
+        <li>
+            <% if(page == "Vagas") { %>
+                <button onclick="window.location.href='/jobs'">Vagas</button>
+            <% } else { %>
+                <a href="/jobs">Vagas</a>
+            <% } %>
+        </li>
+        <li>
+            <% if(page == "Perfil") { %>
+                <button onclick="window.location.href='/profile'">Perfil</button>
+            <% } else { %>
+                <a href="/profile">Perfil</a>
+            <% } %>
+        </li>
+        <li>
+            <% if(page == "Inscrições") { %>
+                <button onclick="window.location.href='/subscriptions'">Inscrições</button>                    
+            <% } else { %>
+                <a href="/subscriptions">Inscrições</a>
+            <% } %>
+        </li>
+    </ul>    
+</nav>

@@ -1,0 +1,21 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>    
+    <article class="jobs-list">
+        <h6>Últimas vagas registradas no site</h6>
+        <% jobs.forEach((job) => { %>
+            <a href="/job/<%= job._id %>">
+                <article>                    
+                    <span><%= job.title %> - <%= job.company %></span>
+                    <h5>
+                        <i><%= job.date.toLocaleDateString("pt-br") %></i>
+                    </h5>                    
+                </article>
+            </a>        
+        <% })%>
+    </article>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<%- include("./partials/header"); %>
+    
+<main class="container">
+    <%- include("./partials/nav"); %>    
+    <form>
+        <article>
+            <h6>Registro</h6>
+            <label>Nome
+                <input type="text" name="name" placeholder="Nome" maxlength="30">
+            </label>
+            <label>E-mail
+                <input type="email" name="email" placeholder="E-mail" maxlength="50">
+            </label>
+            <label>Senha
+                <input type="password" name="password" placeholder="Senha" maxlength="60">
+            </label>                
+            <input type="submit" value="Registrar">
+            <div class="pico-background-red-500 errors" style="display: none;"></div>
+        </article>            
+    </form>
+</main>
+
+<script src="/register.js"></script>
+
+</body>
+</html>
